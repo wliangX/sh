@@ -31,6 +31,7 @@ if [ ! -e $MACHINES ]; then
   echo "lack of machines.txt file"
   useage
 fi
+
 debug=0
 while getopts "h:dm:t:u:i:v:s:S:c:C:T:" opt; do
   case $opt in
@@ -114,3 +115,55 @@ if [ ! -z $tag ]; then
   echo "Install python packages."
   sudo python3 -m pip  install --upgrade pip
   sudo python3 -m pip install -r ${work_dir}/requirements.txt
+
+  # url_prefix="https://ubit-artifactory-sh.intel.com/artifactory/"
+  # if [ ${url:0:${#url_prefix}} != $url_prefix ]; then
+  #   warnning_echo "Please insure your url is the right url of the bkc you want to test"
+  #   usage
+  # fi
+  ./setup.py $ia_host_ip $ia_host_user $ia_host_pwd $mode $url
+  if [ $? -ne 0 ]; then
+	  echo " **************** Setup failed ************************"
+	  exit 1
+  fi
+  echo -e "********** Setup all have been done successfully **********"
+  warnning_echo "Do you want to run this BKC right now? [y/n] default is y"
+  echo -n "Please type your answer "
+  old_len=$((${#wait_time} + 2))
+  for ((wait_time = 15; wait_time >= 0; wait_time--)); do
+    echo -n "${wait_time}: "
+    new_len=$((${#wait_time} + 2))
+    dis=$((old_len - new_len))
+    old_len=$new_len
+    for ((i = 0; i < $dis; i++)); do
+      echo -en " "
+      echo -en "\b"
+    done
+    s=$(date +%s%N)
+    read -t 1 -n 1 answer
+    e=$(date +%s%N)
+    t=$(((e - s) / 1000000)) # 如果时间差小于1秒，则表示ENTER键很可能被按下
+    if [ ! -z $answer ] || [ $t -lt 1000 ]; then
+      [ ! -z $answer ] && echo ""
+      break
+    fi
+    for ((i = 0; i < $new_len; i++)); do
+      echo -en "\b"
+    done
+  done
+fi
+
+t=${t:-0}
+[ $t -ge 1000 ] && echo ""
+if [ -z $url ] || [ -z $answer ] || [ $answer != "n" -a $answer != "N" ]; then
+  [ $mode == "all" ] && mode="streaming"
+  # wait for master service
+  echo "wait for master service start"
+  #sleep 10
+  if [ -z $silver_case ]; then
+    sudo ./run.py  $ia_host_ip $ia_host_user $ia_host_pwd $mode $timeout 0 $nvr8_11 $debug $secure $config --TO=$To --CC=$CC
+  else
+    sudo ./run.py $ia_host_ip $ia_host_user $ia_host_pwd $mode $timeout 0 $nvr8_11 $debug $secure $config --TO $To --CC $CC --silver=$silver_case
+  fi
+  exit $?
+fi
