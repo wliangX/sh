@@ -1,0 +1,237 @@
+git clone git@192.168.240.101:commandcenterv3.0/products/business-products/incident-handing-domain/icc-server.git
+ssh-keygen -t rsa -C "1120677377@qq.com"  // 生产密钥
+git init 初始化
+git config --global user.name "your name"      // 设置全局用户名  "wuliang 220900025"
+git config --global user.email "your email"    // 设置邮箱			"220900025@hytera.com"
+git config -l 查看git配置
+git branch -a 查看所有的分支
+git branch        // 查看本地分支信息
+git add file        // 添加单个文件到暂存区
+git add --all      // 添加所有的修改文件到暂存区
+git rm 文件名(包括路径) //从git中删除指定文件本地也会删除
+git rm --cached a.a 从git中删除指定文件本地不会删除
+git commit -m 'your comments'         // 带评论提交，用于说明提交内容、变更、作用等
+git status
+git log     // 显示所有提交的历史记录
+git reset --hard 'commit_id'    // 会退到 commit_id 指定的提交版本
+git checkout -- file   // 如果 Readme.md 文件在工作区，则丢弃其修改退回暂存区的状态
+git reset HEAD Readme.md // 将 Readme.md 恢复到 HEAD 提交版本的状态
+git reset file   // 将文件撤销add的操作
+git show HEAD    // # 显示HEAD提交文件 的变化
+————————————————
+F12    转到定义或实现
+Ctrl + Shift + /    注释选定行 取消注释选定行
+Ctrl + Enter    在当前行插入空行
+Ctrl + Shift + Enter    在当前行下方插入空行
+Ctrl + }	匹配大括号、括号
+Alt + 菜单字母   打开菜单栏
+systemctl start docker
+启动docker：
+systemctl start docker
+停止docker：
+systemctl stop docker
+重启docker：
+systemctl restart docker
+查看docker状态：
+systemctl status docker
+开机启动：
+systemctl enable docker
+查看docker概要信息
+docker info
+查看docker帮助文档
+docker --help
+查看自己服务器中docker 镜像列表
+docker images
+docker images -q 查看所有的镜像
+搜索镜像
+docker search 镜像名
+docker search --filter=STARS=9000 mysql 搜索 STARS >9000的 mysql 镜像
+拉取镜像 不加tag(版本号) 即拉取docker仓库中 该镜像的最新版本latest 加:tag 则是拉取指定版本
+docker pull 镜像名 
+docker pull 镜像名:tag
+删除本地镜像
+docker rmi 镜像ID
+docker rmi `docker images -q` 删除所有
+查看正在运行容器列表
+
+docker ps
+1
+查看所有容器 -----包含正在运行 和已停止的
+
+docker ps -a
+创建并启动容器
+docker run 参数
+-i 保持容器运行，通常与-t同时使用。加入it这两个参数后，容器创建后自动进入容器中，退出容器后容器自动关闭
+-t 为容器重新分配一个终端
+-d 以守护模式运行容器。创建容器后在后台运行，需要使用docker exec 进入容器，退出后，容器不会关闭
+-it 创建的容器一般为交互式容器， -id创建的容器一般为守护式容器。
+--name 为创建的容器命名
+
+
+sqlplus test/123456
+sqlplus sys/sys as sysdba
+SQL>startup    //启动数据库
+SQL>shutdown immeidate   关闭数据库
+lsnrctl start		启动监听服务
+lsnrctl stop		关闭监听服务
+
+create tablespace icc;
+datafile "c:\test.dbf";
+size 100m;
+autoextend on;
+next 10m;
+
+type
+number	
+number()
+char	最多2000  确定
+varchar2() 最多4000  可变
+long	大文本
+date	日期
+clob 	二进制 最大4个G
+blob 	存储图像，声音，视频
+
+insert into account (id,name,balance) values (4,'雷州',5800)
+show databases/tables;
+select database();
+create database/table [if not exists] 数据库名/表名;
+drop database/table [if exists] 数据库名/表名;
+use 数据库名;
+
+desc 表名;
+alter table 表名 add 字段 类型;
+alter table 表名 change 旧字段 字段 类型;
+alter table 表名 drop 字段;
+alter table 表名 rename to 新表名；
+truncate table 表名;  //截断为0
+distinct
+数据库  表 数据(insert update delete)
+insert into 表名 (字段) values(值)；
+insert into 表名 values(值)；（全字段）
+update 表名 set 字段=值 where 条件;  将表里的满足条件的字段修改
+update 表名 set 字段=值; 将表里面的所以字段修改；
+delete from 表名 where 条件;
+delete from 表名;  //删除整个表
+查询	重复	字段   	表名 	条件 ；字段	  （正则_(一个) %(任意))
+select distinct  * from tb_user where  name < '20'   like '__';
+查询   合计 字段     表名
+select count(*) from tb_user;  统计整个表的所有字段；
+统计西安地区员工年龄之和
+查询  	之和 字段	 表名  条件		字段；
+查询年龄小于45的员工， 并根据工作地点分组，获取员工数量大于3的工作地址
+select workaddr,count(*) from tb_user where age < 45 group by workaddr having count(*) > 3;
+根据年龄对公司的员工进行升序排序，年龄相同的话再按照入职时间降序排序
+select * from tb_user order by age asc, date desc;  //asc; (默认，升序) desc(降序)
+select 字段 from 表名 limit 起始索引,查询记录数
+统计性别为男，年龄再20到40 之间姓名为3个字的员工。
+select * from tb_user where gender = 'm' and (age < 40 && age >20) and name like '___';
+select count(*) from tb_user where age < 60 group by gender;
+select name,count(age) from tb_user where age < 35 order by age asc,date desc;
+select gender,age from tb_user where age > 20 and age < 40 and gender = 'm' limit 5 order by age asc,date desc;
+编写顺序
+select 结果显示的字段以及计算函数  from 表名 where 条件 like group by order by(desc) limit n;
+多表查询
+select * from emp, dept 笛卡尔积
+内连接查询的是两个表的交集的部分，外连接查询的左边或者右边的表的内容再加上交集的部分
+隐式内连接
+select * from emp, dept where emp.dept_id = dept.id;
+显示内连接
+select * from emp e join dept d on e.dept_id = d.id
+select e.name, d.name from emp e join dept d on e.dept_id = d.id;
+如果一旦使用了别名后面的条件等就要一直用别名
+左外连接（左表 + 交集部分）
+select * from emp e left join dept d on e.dept_id = d.id;
+右外连接（右表 + 交集部分）
+select * from emp e right join dept d on e.dept_id = d.id; 等价 select * from dept d left join emp e on e.dept_id = d.id; 
+自连接 必须要对表取别名
+select * from emp e1 join emp e2 where e1.managerid = e2.id
+ select 结果显示的字段以及计算函数  from 表名 where 条件 like group by order by(desc) limit
+标量子查询 （查询结果返回的是一个单个值或者数）
+常用的操作： =  <>  > >= < <=
+例如： select * from emp where dept_id = (select id from dept where name = '销售部')  -- 查询销售部门员工信息
+列子查询 （查询结果返回的是一列或者是多行）
+常用的操作：
+in  		in(循环里面的每一个)
+not in		不在循环之内
+all			> all(...) 大于里面所有的数据   > max
+any			> any(...) 大于其中一个的数据   > min
+some 		与any 等同
+例如： select * from emp where dept_id in (select id from dept where name = '销售部' or name = '市场部')  -- 查询销售部和市场部员工信息
+select * from emp where salary > all (select salary from emp where dept_id = (select * from dept where name = '财务部'))   -- 查询高出财务部门所有人薪资都高的员工信息
+行子查询：（查询结果返回的是一行或者是多列）
+常用的操作： =  <>  in  not in 
+例如： select * from emp where (dept_id, salary) = (select dept_id, salary from emp where name = '张三')  -- 查询与张三相同部门和薪资相同的员工信息
+表子查询：（查询结果返回的是多行多列）
+常用的操作：in
+例如： select * from emp where (dept_id, salary) in (select dept_id, salary from emp where name = '张三' or name = '李四')  -- 查询与张三或者李四相同部门和薪资相同的员工信息
+事物 （执行成功则commit 提交 执行失败需要回滚数据）： 四大特性 （ACID 原子性 一致性 隔离性 持久性）
+START TRANSACTION 或者 BEGIN
+提交 commit
+回滚 rollback
+并发事物会引起：脏读，不可重复读，幻读
+事物隔离级别
+原符号       <        <=      >       >=       &       '         "
+替换符号    &lt;     &lt;=   &gt;    &gt;=   &amp;   &apos;    &quot;
+
+SQL>startup    //启动数据库
+SQL>shutdown immeidate   关闭数据库
+SQL>lsnrctl start		启动监听服务
+SQL>lsnrctl stop		关闭监听服务
+
+select* from ICC1;
+
+update ICC1 set NAME='aaaa' where id = 111;
+Linux下如何查看某一进程的CPU占用率
+ps aux | head -1; ps aux | sort -rn -k +3 | head -20
+
+docker inspect 98e8e463cac1
+"MergedDir": "/var/lib/docker/overlay2/d8e4d8dc4522b9f1151724190ab5ade3834abcb7434cc1ba7dfac57a47b36711/merged",
+"UpperDir": "/var/lib/docker/overlay2/d8e4d8dc4522b9f1151724190ab5ade3834abcb7434cc1ba7dfac57a47b36711/diff",
+"WorkDir": "/var/lib/docker/overlay2/d8e4d8dc4522b9f1151724190ab5ade3834abcb7434cc1ba7dfac57a47b36711/work"
+
+http://192.168.240.116/ICC_RAR/ICC3.0
+http://192.168.240.116/ICC_RAR/ICC3.0
+std::string l_strSyncMsg = l_oRequestCallRefId->ToString(m_pJsonFty->CreateJson());
+OnNotifiCallOverSync(boost::make_shared<CNotifiSendRequest>(l_strSyncMsg));
+su - postgres
+psql -U postgres -d icc -h 192.168.73.33 -p 5432
+
+
+升级说明：
+1、先将sql文件传到在服务器的/home/postgres下
+2、登陆服务器切换用户su - postgres
+3、psql -U postgres -d icc -h 192.168.73.33 -p 5432 -f sql文件
+
+解压镜像文件
+docker load --input commandcenter.icc.server.v3.2.03.23f87e4.liangshan-x86_64.tar.gz 
+运行镜像文件
+docker run -it --name chongqi --net=host -dit commandcenter/icc/server:v3.2.03.23f87e4.liangshan-x86_64
+查看运行的镜像
+docker ps -a | grep chongqi
+进入镜像
+docker exec -it chongqi /bin/bash
+在镜像中
+	更新代理
+	apt update
+	安裝gdb
+	apt -y install gdb
+	退出镜像
+	exit
+把core文件拷贝入镜像里面
+docker cp core.199 chongqqi:/usr/CommandCenter/icc/CommandCenter.ICC.Server/
+进入镜像
+docker exec -it chongqi /bin/bash
+在镜像中执行core文件
+gdb ./CommandCenter.ICC.Server core.199
+--------------
+恢复环境
+停止镜像
+docker stop chongqi
+删除镜像
+docker rm chongqi
+查看当前镜像
+docker images
+删除镜像
+docker rmi 426f88595589
+
+get_seat_alarm_statistics_request
