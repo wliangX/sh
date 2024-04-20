@@ -19,6 +19,7 @@ git reset HEAD Readme.md // 将 Readme.md 恢复到 HEAD 提交版本的状态
 git reset file   // 将文件撤销add的操作
 git show HEAD    // # 显示HEAD提交文件 的变化
 ————————————————
+
 F12    转到定义或实现
 Ctrl + Shift + /    注释选定行 取消注释选定行
 Ctrl + Enter    在当前行插入空行
