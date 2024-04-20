@@ -1,0 +1,18 @@
+version: "3.0"
+services:  
+  incident:
+    image: "commandcenter/icc/gateway:${TAG:-latest}"
+    container_name: "commandcenter.icc.gateway"
+    network_mode: "host"
+    user: root
+    volumes:
+      - "/usr/CommandCenter/log/icc/gateway:/usr/CommandCenter/icc/Tools/Logs/CommandCenter.ICC.Gateway"
+      - "/etc/localtime:/etc/localtime"      
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "80M"
+        max-file: "10"
+    restart: "always"
+    environment:
+      - UCMS_ADDR=192.168.0.168:28025

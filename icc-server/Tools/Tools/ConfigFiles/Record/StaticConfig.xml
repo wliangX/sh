@@ -1,0 +1,12 @@
+<ICC>
+	<Component>
+		<AmqClient>
+			<ClientID>ICC.Record</ClientID>
+			<Topics>topic_doubleserver;topic_acd_call_state_sync;topic_device_state_sync;topic_call_over_sync;topic_cti_connect_state_sync;</Topics>
+			<Queues></Queues>
+		</AmqClient>
+		<Logger>
+			<TargetMidPath>CommandCenter.ICC.Record</TargetMidPath>
+		</Logger>
+	</Component>
+</ICC>

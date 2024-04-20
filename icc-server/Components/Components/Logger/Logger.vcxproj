@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="adler32.c" />
+    <ClCompile Include="Boost.cpp" />
+    <ClCompile Include="ComponentImpl.cpp" />
+    <ClCompile Include="compress.c" />
+    <ClCompile Include="CompressProcesser.cpp" />
+    <ClCompile Include="crc32.c" />
+    <ClCompile Include="deflate.c" />
+    <ClCompile Include="FactoryImpl.cpp" />
+    <ClCompile Include="gzclose.c" />
+    <ClCompile Include="gzlib.c" />
+    <ClCompile Include="gzread.c" />
+    <ClCompile Include="gzwrite.c" />
+    <ClCompile Include="infback.c" />
+    <ClCompile Include="inffast.c" />
+    <ClCompile Include="inflate.c" />
+    <ClCompile Include="inftrees.c" />
+    <ClCompile Include="ioapi.c" />
+    <ClCompile Include="LogFactoryImpl.cpp" />
+    <ClCompile Include="LogImpl.cpp" />
+    <ClCompile Include="mztools.c" />
+    <ClCompile Include="SemaphoreEx.cpp" />
+    <ClCompile Include="SemDataList_T.cpp" />
+    <ClCompile Include="trees.c" />
+    <ClCompile Include="unzip.c" />
+    <ClCompile Include="zip.c" />
+    <ClCompile Include="zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\zlib-1.2.11\gzguts.h" />
+    <ClInclude Include="..\..\..\zlib-1.2.11\inftrees.h" />
+    <ClInclude Include="..\..\..\zlib-1.2.11\zutil.h" />
+    <ClInclude Include="Boost.h" />
+    <ClInclude Include="ComponentImpl.h" />
+    <ClInclude Include="CompressProcesser.h" />
+    <ClInclude Include="crc32.h" />
+    <ClInclude Include="crypt.h" />
+    <ClInclude Include="deflate.h" />
+    <ClInclude Include="FactoryImpl.h" />
+    <ClInclude Include="gzguts.h" />
+    <ClInclude Include="inffast.h" />
+    <ClInclude Include="inffixed.h" />
+    <ClInclude Include="inflate.h" />
+    <ClInclude Include="ioapi.h" />
+    <ClInclude Include="LogFactoryImpl.h" />
+    <ClInclude Include="LogImpl.h" />
+    <ClInclude Include="mztools.h" />
+    <ClInclude Include="SemaphoreEx.h" />
+    <ClInclude Include="SemDataList_T.h" />
+    <ClInclude Include="trees.h" />
+    <ClInclude Include="unzip.h" />
+    <ClInclude Include="zconf.h" />
+    <ClInclude Include="zip.h" />
+    <ClInclude Include="zlib.h" />
+    <ClInclude Include="zutil.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{78DAEA48-79A6-4919-AE84-956B1249785E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Logger</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.com</TargetExt>
+    <OutDir>$(SolutionDir)\$(Configuration)\Components\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.com</TargetExt>
+    <OutDir>$(SolutionDir)\$(Configuration)\Components\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_DEBUG;_WINDOWS;_USRDLL;HYTERAACSSERVERCOMPONENTLOGGER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\ThirdParty\Windows\boost;..\..\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101;4018;4244;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\ThirdParty\Windows\boost\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libboost_log_setup-vc142-mt-gd-x32-1_75.lib;libboost_log-vc142-mt-gd-x32-1_75.lib;libboost_date_time-vc142-mt-gd-x32-1_75.lib;libboost_filesystem-vc142-mt-gd-x32-1_75.lib;libboost_system-vc142-mt-gd-x32-1_75.lib;libboost_thread-vc142-mt-gd-x32-1_75.lib;psapi.lib;libboost_chrono-vc142-mt-gd-x32-1_75.lib;libboost_regex-vc142-mt-gd-x32-1_75.lib;libboost_locale-vc142-mt-gd-x32-1_75.lib;libboost_atomic-vc142-mt-gd-x32-1_75.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;NDEBUG;_WINDOWS;_USRDLL;HYTERAACSSERVERCOMPONENTLOGGER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\ThirdParty\Windows\boost;..\..\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101;4018;4244;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\ThirdParty\Windows\boost\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libboost_log_setup-vc142-mt-x32-1_75.lib;libboost_log-vc142-mt-x32-1_75.lib;libboost_date_time-vc142-mt-x32-1_75.lib;libboost_filesystem-vc142-mt-x32-1_75.lib;libboost_system-vc142-mt-x32-1_75.lib;libboost_thread-vc142-mt-x32-1_75.lib;libboost_chrono-vc142-mt-x32-1_75.lib;libboost_regex-vc142-mt-x32-1_75.lib;libboost_locale-vc142-mt-x32-1_75.lib;libboost_atomic-vc142-mt-x32-1_75.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

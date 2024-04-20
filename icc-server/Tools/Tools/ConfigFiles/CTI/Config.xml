@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ICC> 
+  <Component> 
+	<HttpServer>
+		<LocalPort>21030</LocalPort>                                  <!--  HttpServer   端口        -->
+		<NacosServerIp>127.0.0.1</NacosServerIp>                      <!--  NacosServer  IP          -->
+		<NacosServerPort>8848</NacosServerPort>                       <!--  NacosServer  Port        -->
+		<NacosNamespace>dev</NacosNamespace>                          <!--  NacosName    服务目录    -->
+		<NacosServiceName>icc-cti-service</NacosServiceName>          <!--  NacosService 服务名称    -->
+		<NacosGroupName>global</NacosGroupName>	                      <!--  NacosGroup   分组名称    -->
+        <queryurl>/nacos/v1/ns/instance/list</queryurl>               <!--  Nacos        查询网址    -->
+		<registurl>/nacos/v1/ns/instance</registurl>                  <!--  Nacos        注册网址    -->
+	    <ucmsurl>/v1/health/getAddr</ucmsurl>                         <!--  Nacos        网址        -->
+        <checkinterval>1</checkinterval>		                      <!--  Nacos        检测间隔    -->
+        <successflag>ok</successflag>                                 <!--  Nacos        成功标识    -->
+        <RespTimeout>30</RespTimeout>			                      <!--  Nacos        超时时间ms  -->	
+		<RequestLimitCount>160</RequestLimitCount>
+	</HttpServer>
+    <AmqClient>  
+      <CMSPriority>4</CMSPriority>                                    <!--  消息优先级               -->
+      <CMSExpiration>60000</CMSExpiration>                            <!--  消息过期时间             -->
+      <IsConsumerExpiryCheckEnabled>0</IsConsumerExpiryCheckEnabled>  <!--  是否启用消费者过期检查   -->
+      <UserName>admin</UserName>                                      <!--  AmqClient    用户名      -->
+      <Password>Command_123</Password>                                <!--  AmqClient    用户密码    -->
+      <FailoverTimeout>3000</FailoverTimeout>                         <!--  AmqClient    故障超时    -->
+      <ManagerPort>22060</ManagerPort>                                <!--  AmqClient    管理端口    -->
+	  <TimedWait>1</TimedWait>										  <!--  AmqClient抢锁等待时间 单位:秒 -->							
+      <Servers> 
+        <Server> 
+          <Host>127.0.0.1</Host>                                      <!-- AmqClient    IP           -->
+          <Port>22000</Port>                                          <!-- AmqClient    Port         -->
+          <ConnectionTimeout>3000</ConnectionTimeout>                 <!-- AmqClient    连接超时     -->
+          <MaxInactivityDuration>9000</MaxInactivityDuration>         <!-- mq最大不活动持续时间      -->
+        </Server> 
+      </Servers> 
+    </AmqClient>  
+    <DBConn> 
+      <dbname>icc</dbname>                                            <!-- 数据库名                 -->
+      <username>icc</username>                                        <!-- 数据库用户名             -->
+      <password>123456</password>                                     <!-- 数据库用户密码           -->
+      <connnum>10</connnum>                                           <!-- 连接池的初始化大小       -->
+      <increasenum>2</increasenum>                                    <!-- 连接池自增长的大小       -->
+      <maxnum>20</maxnum>                                             <!-- 连接池的最大大小         -->
+	  <statementtimeout>30000</statementtimeout>		                       <!-- sql执行超时         -->
+      <Servers> 
+        <Server> 
+          <dbhost>127.0.0.1</dbhost>                                  <!-- 数据库IP                 -->
+          <dbport>5432</dbport>                                       <!-- 数据库Port               -->
+        </Server> 
+      </Servers> 
+    </DBConn>  
+    <Logger> 
+	  <Level>5</Level>                                                <!-- 日志等级                 -->
+	  <Target>../Tools/Logs</Target>                                  <!-- 日志保存路径             -->
+	  <AutoFlush>1</AutoFlush>                                        <!-- 日志自动刷新功能         -->
+	  <RotationSize>10</RotationSize>                                 <!-- 日志文件的最大尺寸       -->
+	  <MaxSize>1000</MaxSize>                                         <!-- 文件夹所占最大空间       -->
+	  <MinFreeSpace>1000</MinFreeSpace>                               <!-- 磁盘最小预留空间         -->
+	  <CheckInterval>60</CheckInterval>                               <!-- 检测间隔                 -->
+	  <IsCompress>true</IsCompress>                                   <!-- 日志是否压缩             -->
+	  <PreserveDays>360</PreserveDays>                                 <!-- 日志保存时间             -->
+    </Logger>  
+    <RedisClient> 
+      <Mode>0</Mode>                                                  <!-- 部署模式 0哨兵1集群      -->
+      <Servers> 
+        <Server> 
+          <Host>127.0.0.1</Host>                                      <!-- RedisClient IP           -->
+          <Port>22130</Port>                                          <!-- RedisClient Port         -->
+          <Password>Command_123</Password>                            <!-- RedisClient 登录密码     -->
+        </Server> 
+      </Servers> 
+    </RedisClient> 
+  </Component>  
+  <Plugin> 
+    <DogClient> 
+      <IsUsing>1</IsUsing>                                            <!-- 加载DogClient插件 开关   -->
+    </DogClient>  
+    <Message> 
+      <ServiceLockTTL>15</ServiceLockTTL>                             <!-- 获取服务锁数量           -->
+      <ServiceLockTimeOut>5</ServiceLockTimeOut>                      <!-- 获取服务锁超时           -->
+	  <ShardUpdateTime>23</ShardUpdateTime>                           <!-- 每日检查时间(24小时制)   -->
+      <TimeOut>5</TimeOut>                                            <!-- post 请求超时时间        -->
+    </Message>  
+    <CTI> 
+      <SwitchApiType>0</SwitchApiType>                                <!-- 交换机 API 类型          -->
+      <ReadyAgents> 
+        <ReadyAgent/> 
+      </ReadyAgents>  
+	  <ViolationCallRingTimeOut>31</ViolationCallRingTimeOut>         <!-- 违规呼叫响铃超时         -->
+      <ViolationCallTalkTimeOut>61</ViolationCallTalkTimeOut>         <!-- 违规通话超时             -->
+      <ViolationBusyStateTimeOut>61</ViolationBusyStateTimeOut>       <!-- 违反忙状态超时           -->
+      <ViolationAlarmTimeOut>201</ViolationAlarmTimeOut>              <!-- 违规报警超时             -->
+      <MinOnlineAgentNum>1</MinOnlineAgentNum>                        <!-- 最小在线座席人数         -->
+      <HeartBeatTimeSpan>6</HeartBeatTimeSpan>                        <!-- 查询 CTI 与 AES 网络状态时间间隔，单位，秒 -->
+      <QueryAgentStateTimeSpan>6</QueryAgentStateTimeSpan>            <!-- 查询 Agent 状态时间间隔，单位，秒          -->
+      <MonitorTimeSpan>10</MonitorTimeSpan>                           <!-- 设备监视时间间隔，单位：秒                 -->
+      <MaxMonitorCount>10</MaxMonitorCount>                           <!-- 设备监视次数                          -->     
+      <UseAnalogueTrunk>0</UseAnalogueTrunk>                          <!-- Redis 服务参数                        -->
+      <MinZoneLen>3</MinZoneLen>                                      <!-- 区号最小长度                          -->
+      <MaxZoneLen>4</MaxZoneLen>                                      <!-- 区号最大长度                          -->
+      <MinLocalPhoneLen>7</MinLocalPhoneLen>                          <!-- 本地号码最小长度                      -->
+      <MaxLocalPhoneLen>8</MaxLocalPhoneLen>                          <!-- 本地号码最大长度                      -->
+      <MobilePreLen>7</MobilePreLen>                                  <!-- 手机号码前缀                          -->
+      <TransferRingTimeout>25</TransferRingTimeout>                   <!-- 振铃超时时长（单位：秒）              -->
+      <ConferenceRingTimeout>25</ConferenceRingTimeout>               <!-- 振铃超时时长（单位：秒）              -->
+      <CallInvalidTimeSpan>24</CallInvalidTimeSpan>                   <!-- 检查异常呼叫, 超过该时间则认为是异常  -->
+      <RouteDest>108</RouteDest>                                      <!-- 黑名单路由地址                        -->
+	  <IsUseBlackRoute>0</IsUseBlackRoute>							  <!-- 是否启用黑名单号码呼叫转VDN       	 -->
+	  <BlackRouteDest>922</BlackRouteDest>						  	  <!-- 语音播报VND号码				    	 -->
+	  <OutCallHead>9</OutCallHead>                                    <!-- 出局号                                -->
+	  <EnableConfigCalloutCheck>0</EnableConfigCalloutCheck>          <!-- 启用从配置中读取的号码列表中判断是否被叫是外线号码  -->
+	  <EnableSkillMerge>1</EnableSkillMerge>                          <!-- 是否启用技能组合并配置（一个分局的110和122放在一个技能组），默认启用  -->
+	  <CTITestFlag>0</CTITestFlag>                                    <!-- 是否启用测试模式  -->
+      <DialRules> 
+        <DialRule> 
+          <Len>7</Len>                                                <!-- 号码长度        -->
+          <Prefix>5</Prefix>                                          <!-- 字头            -->
+          <RemoveHeadLen></RemoveHeadLen>                             <!-- 移除的字头长度  -->
+          <AddPrefix>0</AddPrefix>                                    <!-- 添加的字头      -->
+        </DialRule>   
+      </DialRules> 
+	  <CheckNumbers> 
+        <CheckNumber> 
+          <Len>12</Len>                                               <!-- 号码长度        -->
+          <Prefix>01</Prefix>                                         <!-- 字头            -->
+          <RemoveHeadLen>1</RemoveHeadLen>                            <!-- 移除的字头长度  -->
+          <AddPrefix/> 
+        </CheckNumber>		
+        <CheckNumber>                                                
+          <Len>13</Len>                                               <!-- 号码长度        -->
+          <Prefix>001</Prefix>                                        <!-- 字头            -->
+          <RemoveHeadLen>2</RemoveHeadLen>                            <!-- 移除的字头长度  -->
+          <AddPrefix/> 
+        </CheckNumber>		
+      </CheckNumbers> 
+      <ACDGrpConvers> 
+        <ACDGrpConver> 
+          <ACD>119</ACD>                                             <!-- 原始 ACD         -->
+          <Alias>110</Alias>                                         <!-- ACD 别名         -->
+		  <Dept>119</Dept>                                           <!-- 所属机构         -->
+        </ACDGrpConver> 
+		<ACDGrpConver> 
+          <ACD>122</ACD>                                             <!-- 原始 ACD         -->
+          <Alias>110</Alias>                                         <!-- ACD 别名         -->
+		  <Dept>122</Dept>                                           <!-- 所属机构         -->
+        </ACDGrpConver>
+		<ACDGrpConver>  
+          <ACD>110</ACD>                                             <!-- 原始 ACD         -->
+          <Alias>110</Alias>                                         <!-- ACD 别名         -->
+		  <Dept>110</Dept>                                           <!-- 所属机构         -->
+        </ACDGrpConver>
+      </ACDGrpConvers>  
+      <Devices> 
+        <Device> 
+          <ExtNo>8001</ExtNo>                                        <!-- 分机号           -->
+          <Type>ipphone</Type>                                       <!-- 类型             -->
+          <AgentId>6001</AgentId>                                    <!-- 短号             -->
+          <AgentPwd>1234</AgentPwd>                                  <!-- 密码             -->
+        </Device>  
+        <Device> 
+          <ExtNo>8002</ExtNo>                                        <!-- 分机号           -->
+          <Type>ipphone</Type>                                       <!-- 类型             -->
+          <AgentId>6002</AgentId>                                    <!-- 短号             -->
+          <AgentPwd>1234</AgentPwd>                                  <!-- 密码             -->
+        </Device>  
+        <Device> 
+          <ExtNo>8003</ExtNo>                                        <!-- 分机号           -->
+          <Type>ipphone</Type>                                       <!-- 类型             -->
+          <AgentId>6003</AgentId>                                    <!-- 短号             -->
+          <AgentPwd>1234</AgentPwd>                                  <!-- 密码             -->
+        </Device>  
+        <Device> 
+          <ExtNo>8004</ExtNo>                                        <!-- 分机号           -->
+          <Type>ipphone</Type>                                       <!-- 类型             -->
+          <AgentId>6004</AgentId>                                    <!-- 短号             -->
+          <AgentPwd>1234</AgentPwd>                                  <!-- 密码             -->
+        </Device> 
+      </Devices>  
+      <ACDGrpMembers> 
+        <ACDGrpMember> 
+          <ACD>110</ACD>                                             <!-- 技能组           -->
+          <Ext>8001</Ext>                                            <!-- 技能组编号       -->
+        </ACDGrpMember>  
+        <ACDGrpMember> 
+          <ACD>110</ACD>                                             <!-- 技能组           -->                
+          <Ext>8002</Ext>                                            <!-- 技能组编号       -->
+        </ACDGrpMember>  
+        <ACDGrpMember>                                                   
+          <ACD>110</ACD>                                             <!-- 技能组           -->        
+          <Ext>8003</Ext>                                            <!-- 技能组编号       -->
+        </ACDGrpMember>  
+        <ACDGrpMember> 
+          <ACD>110</ACD>                                             <!-- 技能组           --> 
+          <Ext>8004</Ext>                                            <!-- 技能组编号       -->
+        </ACDGrpMember> 
+      </ACDGrpMembers> 
+    </CTI>  
+	<FSAESClient> 													<!-- 启用国产排队机需要将 SwitchApiType配置为3 --> 
+      <FsServerIP>127.0.0.1</FsServerIP> 							<!-- 国产排队机HCP服务IP地址  --> 
+      <FsServerPort>29080</FsServerPort>  							<!-- 国产排队机HCP服务HTTP服务端口  -->
+      <FsServerUserName>hcp</FsServerUserName>  					<!-- 国产排队机AES用户名,需在cmp中开户  -->
+      <FsServerPassword>123456</FsServerPassword> 					<!-- 国产排队机AES用户密码  -->
+	  <FsCTIServerPort>21032</FsCTIServerPort> 						<!-- 国产排队机对接服务端口  -->
+    </FSAESClient> 
+    <TSAPIClient> 
+      <AEServerIP>127.0.0.1</AEServerIP>                            <!-- TSAPI Server地址  -->
+      <AEServerPort>450</AEServerPort>                              <!-- TSAPI Server端口  -->
+      <AEServerUserName>avaya</AEServerUserName>                    <!-- CTI UserName      -->
+      <AEServerPassword>Avaya123#</AEServerPassword>                <!-- CTI Password      -->
+    </TSAPIClient>
+	<SlaveTSAPIClient> 
+      <AEServerIP>127.0.0.1</AEServerIP>  
+      <AEServerPort>450</AEServerPort>  
+      <AEServerUserName>avaya</AEServerUserName>  
+      <AEServerPassword>Avaya123#</AEServerPassword> 
+    </SlaveTSAPIClient>
+	<MonitorSeat> 
+      <MonitorCode>ICC_BZ</MonitorCode>                             <!-- Monitor编码      -->  
+    </MonitorSeat>
+	<DBProcess> 
+      <EnableProcessAlarm>1</EnableProcessAlarm>  
+      <procthreaddispatchmode>1</procthreaddispatchmode>                     <!-- 线程分发模式，1：按照消息数最少分发，0：轮询  -->
+	  <procthreadcount>4</procthreadcount>                                   <!-- 处理线程的数量    -->	  
+    </DBProcess>
+	<PoliceCode>
+      <CodeMode>1</CodeMode>										<!--	警员号码模式：1、警员身份证号码 2、警员编号	-->
+      <AssistantPolice>[辅]</AssistantPolice>						<!--	辅警类型警员前缀	-->		
+      <Police>[警]</Police>											<!--	民警类型警员前缀	-->
+    </PoliceCode>
+  </Plugin> 
+</ICC>

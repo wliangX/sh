@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AESClient.cpp" />
+    <ClCompile Include="AgentIPMap.cpp" />
+    <ClCompile Include="Boost.cpp" />
+    <ClCompile Include="CapDataProc.cpp" />
+    <ClCompile Include="CommonFunc.cpp" />
+    <ClCompile Include="CommonTimer.cpp" />
+    <ClCompile Include="FactoryImpl.cpp" />
+    <ClCompile Include="FSFtpFileDownLoad.cpp" />
+    <ClCompile Include="HttpAddress.cpp" />
+    <ClCompile Include="MediaStorage.cpp" />
+    <ClCompile Include="PluginResource.cpp" />
+    <ClCompile Include="RecordBusinessImpl.cpp" />
+    <ClCompile Include="RecordFileManage.cpp" />
+    <ClCompile Include="RecordPluginImpl.cpp" />
+    <ClCompile Include="RTPPacket.cpp" />
+    <ClCompile Include="RTPPackProc.cpp" />
+    <ClCompile Include="RTPRawPacket.cpp" />
+    <ClCompile Include="UploadFiles.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AESClient.h" />
+    <ClInclude Include="AgentIPMap.h" />
+    <ClInclude Include="Boost.h" />
+    <ClInclude Include="CapDataProc.h" />
+    <ClInclude Include="CommonFunc.h" />
+    <ClInclude Include="CommonTimer.h" />
+    <ClInclude Include="CommonTimerCore.h" />
+    <ClInclude Include="FactoryImpl.h" />
+    <ClInclude Include="FSFtpFileDownLoad.h" />
+    <ClInclude Include="HttpAddress.h" />
+    <ClInclude Include="MediaStorage.h" />
+    <ClInclude Include="netpacketdefine.h" />
+    <ClInclude Include="PluginResource.h" />
+    <ClInclude Include="RecordBusinessImpl.h" />
+    <ClInclude Include="RecordFileManage.h" />
+    <ClInclude Include="RecordPluginImpl.h" />
+    <ClInclude Include="RTPPacket.h" />
+    <ClInclude Include="RTPPackProc.h" />
+    <ClInclude Include="RTPRawPacket.h" />
+    <ClInclude Include="UploadFiles.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{54B215B3-144C-44D8-B8B6-F3E1B3DF850B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Record</RootNamespace>
+    <ProjectName>Record</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\Plugins\Record\RecordServer</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.plg</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\Plugins\Record\RecordServer</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.plg</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;HYTERAACSSERVERPLUGINCTIAVAYACM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\ThirdParty\Windows\boost;..\..\..\Interface;..\..\..\ThirdParty\Windows\openssl\include;..\..\..\ThirdParty\Windows\npcap-sdk\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101;4018;4244;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\Windows\boost\stage\lib;..\..\..\ThirdParty\Windows\npcap-sdk\Lib;..\..\..\ThirdParty\Windows\openssl\lib\debug</AdditionalLibraryDirectories>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;ws2_32.lib;wpcap.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;HYTERAACSSERVERPLUGINCTIAVAYACM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\ThirdParty\Windows\boost;..\..\..\Interface;..\..\..\ThirdParty\Windows\openssl\include;..\..\..\ThirdParty\Windows\npcap-sdk\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4101;4018;4244;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\Windows\boost\stage\lib;..\..\..\ThirdParty\Windows\npcap-sdk\Lib;..\..\..\ThirdParty\Windows\openssl\lib\release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;ws2_32.lib;wpcap.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,12 @@
+<ICC>
+	<Component>
+		<AmqClient>
+			<ClientID>ICC.Server.CTI</ClientID>
+			<Topics>topic_doubleserver;topic_acd_agent_state_sync;topic_monitor_sync;topic_record_file_up_sync;topic_health;topic_call_over_sync;topic_history_call_sync</Topics>
+			<Queues>queue_cti_control;queue_cti_db;queue_agent_state_sync</Queues>
+		</AmqClient>
+		<Logger>
+			<TargetMidPath>CommandCenter.ICC.Server.CTI</TargetMidPath>
+		</Logger>
+	</Component>
+</ICC>

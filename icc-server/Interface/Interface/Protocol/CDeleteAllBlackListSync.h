@@ -1,0 +1,23 @@
+#pragma once 
+#include <Protocol/IRespond.h>
+#include <Protocol/CHeader.h>
+
+namespace ICC
+{
+	namespace PROTOCOL
+	{
+		class CDeleteAllBlackListSync :
+			public IRespond
+		{
+		public:
+			virtual std::string ToString(JsonParser::IJsonPtr p_pJson)
+			{
+				m_oHeader.SaveTo(p_pJson);
+				return p_pJson->ToString();
+			}
+
+		public:
+			CHeader m_oHeader;
+		};
+	}
+}

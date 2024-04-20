@@ -1,0 +1,19 @@
+version: "3.0"
+services:  
+  incident:
+    image: "commandcenter/icc/record:${TAG}"
+    container_name: "commandcenter.icc.record"
+    network_mode: "host"
+    user: root
+    volumes:
+      - "/usr/CommandCenter/log/icc/record:/usr/CommandCenter/icc/Tools/Logs/CommandCenter.ICC.Record"
+      - "/usr/CommandCenter/icc/record/recordfiles:/usr/CommandCenter/icc/Tools/RecordFiles"
+      - "/etc/localtime:/etc/localtime"       
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "80M"
+        max-file: "10"
+    restart: "always"
+    environment:
+      - UCMS_ADDR=${UCMS_ADDR_URL}

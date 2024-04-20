@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ICC> 
+  <Component> 
+	<HttpServer>
+		<LocalPort>21020</LocalPort>                                  <!--  HttpServer   端口        -->
+		<NacosServerIp>127.0.0.1</NacosServerIp>                      <!--  NacosServer  IP          -->
+		<NacosServerPort>8848</NacosServerPort>                       <!--  NacosServer  Port        -->
+		<NacosNamespace>dev</NacosNamespace>                          <!--  NacosName    服务目录    -->
+		<NacosServiceName>icc-gateway-service</NacosServiceName>      <!--  NacosService 服务名称    -->
+		<NacosGroupName>global</NacosGroupName>                       <!--  NacosGroup   分组名称    -->
+   		<queryurl>/nacos/v1/ns/instance/list</queryurl>               <!--  Nacos        查询网址    -->
+		<registurl>/nacos/v1/ns/instance</registurl>                  <!--  Nacos        注册网址    -->
+		<ucmsurl>/v1/health/getAddr</ucmsurl>                         <!--  Nacos        网址        -->
+		<checkinterval>1</checkinterval>                              <!--  Nacos        检测间隔    -->
+		<successflag>ok</successflag>                                 <!--  Nacos        成功标识    -->
+		<RespTimeout>30</RespTimeout>                                 <!--  Nacos        超时时间ms  -->
+		<RequestLimitCount>160</RequestLimitCount>
+	</HttpServer>
+    <AmqClient> 
+      <CMSPriority>4</CMSPriority>                                    <!--  消息优先级               -->
+      <CMSExpiration>60000</CMSExpiration>                            <!--  消息过期时间             -->
+      <IsConsumerExpiryCheckEnabled>0</IsConsumerExpiryCheckEnabled>  <!--  是否启用消费者过期检查   -->
+      <UserName>admin</UserName>                                      <!--  AmqClient    用户名      -->
+      <Password>Command_123</Password>                                <!--  AmqClient    用户密码    -->
+      <FailoverTimeout>3000</FailoverTimeout>                         <!--  AmqClient    故障超时    -->
+	  <TimedWait>1</TimedWait>										  <!--  AmqClient抢锁等待时间 单位:秒 -->	
+      <Servers> 
+        <Server> 
+          <Host>127.0.0.1</Host>                                      <!-- AmqClient    IP           -->
+          <Port>22000</Port>                                          <!-- AmqClient    Port         -->
+          <ConnectionTimeout>3000</ConnectionTimeout>                 <!-- AmqClient    连接超时     -->
+          <MaxInactivityDuration>9000</MaxInactivityDuration>         <!-- mq最大不活动持续时间      -->
+        </Server> 
+      </Servers> 
+    </AmqClient>  
+    <DBConn> 
+      <dbname>icc</dbname>                                            <!-- 数据库名                 --> 
+      <username>icc</username>                                        <!-- 数据库用户名             -->
+      <password>123456</password>                                     <!-- 数据库用户密码           -->
+      <connnum>10</connnum>                                           <!-- 连接池的初始化大小       -->
+      <increasenum>2</increasenum>                                    <!-- 连接池自增长的大小       -->
+      <maxnum>20</maxnum>                                             <!-- 连接池的最大大小         -->
+	  <statementtimeout>30000</statementtimeout>		                       <!-- sql执行超时         -->
+      <Servers> 
+        <Server> 
+          <dbhost>127.0.0.1</dbhost>                                  <!-- 数据库IP                 -->
+          <dbport>5432</dbport>                                       <!-- 数据库Port               -->
+        </Server> 
+      </Servers> 
+    </DBConn>  
+	<DBConnEx>
+			<Servers>
+			    <Server>
+				    <dbhost>127.0.0.1</dbhost>                        <!-- 主数据库IP               -->
+			        <dbport>5432</dbport>                             <!-- 主数据库Port             -->
+				</Server> 
+			</Servers>
+			<dbhost>127.0.0.1</dbhost>                                <!-- 备数据库IP               -->
+			<dbport>1521</dbport>                                     <!-- 备数据库Port             -->
+			<dbname>orcl</dbname>                                     <!-- 数据库名                 -->
+			<username>icc</username>                                  <!-- 数据库用户名             -->
+			<password>123456</password>                               <!-- 数据库用户密码           -->
+			<DatabaseSuperUserName>postgres</DatabaseSuperUserName>   <!-- 数据库管理员名称         -->
+			<DatabaseSuperUserPassword>123456</DatabaseSuperUserPassword> <!-- 数据库管理员户密码       -->
+			<connnum>10</connnum>                                     <!-- 连接池的初始化大小       -->
+			<increasenum>1</increasenum>                              <!-- 连接池自增长的大小       -->
+			<maxnum>20</maxnum>		                                  <!-- 连接池的最大大小         -->
+	</DBConnEx>
+	<Logger>
+		<Level>5</Level>                                              <!-- 日志等级                 -->
+		<Target>../Tools/Logs</Target>                                <!-- 日志保存路径             -->
+		<AutoFlush>1</AutoFlush>                                      <!-- 日志自动刷新功能         -->
+		<RotationSize>10</RotationSize>                               <!-- 日志文件的最大尺寸       -->
+		<MaxSize>1000</MaxSize>                                       <!-- 文件夹所占最大空间       -->
+		<MinFreeSpace>1000</MinFreeSpace>                             <!-- 磁盘最小预留空间         -->
+		<CheckInterval>60</CheckInterval>                             <!-- 检测间隔                 -->
+		<IsCompress>true</IsCompress>                                 <!-- 日志是否压缩             -->
+		<PreserveDays>360</PreserveDays>                               <!-- 日志保存时间             -->
+	</Logger> 
+    <RedisClient> 
+      <Mode>0</Mode>                                                  <!-- 部署模式 0哨兵1集群      -->
+      <Servers> 
+        <Server> 
+          <Host>127.0.0.1</Host>                                      <!-- RedisClient IP           -->
+          <Port>22130</Port>                                          <!-- RedisClient Port         -->
+          <Password>Command_123</Password>                            <!-- RedisClient 登录密码     -->
+        </Server> 
+      </Servers> 
+    </RedisClient> 
+  </Component>  
+  <Plugin> 
+    <DogClient> 
+      <IsUsing>1</IsUsing>                                            <!-- 加载DogClient插件 开关   -->
+    </DogClient>  
+    <Message> 
+      <ServiceLockTTL>15</ServiceLockTTL>                             <!-- 获取服务锁数量           -->
+      <ServiceLockTimeOut>5</ServiceLockTimeOut>                      <!-- 获取服务锁超时           -->
+	  <ShardUpdateTime>23</ShardUpdateTime>                                  <!-- 每日检查时间(24小时制)   -->
+      <TimeOut>5</TimeOut>                                            <!-- post 请求超时时间        -->
+    </Message>  
+    <MPA> 
+      <IsUsing>1</IsUsing>                                            <!-- MPA 开关                 -->
+	  <CodeMode>1</CodeMode>										<!--	警员号码模式：1、警员身份证号码 2、警员编号	-->
+      <AssistantPolice>[辅]</AssistantPolice>						<!--	辅警类型警员前缀	-->		
+      <Police>[警]</Police>											<!--	民警类型警员前缀	-->
+    </MPA>   
+	<Founder> 
+      <IsUsing>0</IsUsing>                                            <!-- Founder 开关             -->
+	  <checkinterval>3</checkinterval>                                <!-- 检查间隔                 -->
+	  <tablemodename>TEST01</tablemodename>                           <!-- 表名称                   -->
+	  <InvalidAlarm>1</InvalidAlarm> 								  <!-- 无效警情是否推给方正   1:推送 -->
+	  <SelfDispose>1</SelfDispose> 									  <!-- 已自处警情是否推给方正 1:推送 -->
+	  <FpsIp>80.75.112.93</FpsIp>								   	  <!-- FPS   IP                 -->
+	  <FpsPort>26000</FpsPort>										  <!-- FPS   Port               -->
+	  <DelayTime>-3</DelayTime>										  <!--取数据延时时间			-->
+    </Founder> 
+    <Fast110> 
+      <IsUsing>0</IsUsing>                                            <!-- Fast110 开关             -->
+      <PUChost>127.0.0.1</PUChost>                                    <!-- PUC   IP                 -->
+      <PUCPort>8888</PUCPort>                                         <!-- PUC PortP                -->
+      <Members> 
+        <Member> 
+          <ExtNo>7001</ExtNo>                                         <!-- 分机号                   -->
+          <OutNo>09</OutNo>                                           <!-- 编号                     -->
+          <SipNo>7001</SipNo>                                         <!-- 号码                     -->
+        </Member> 
+      </Members> 
+    </Fast110>  
+    <GPS> 
+      <IsUsing>1</IsUsing>                                            <!-- GPS 开关                 -->
+      <ServerIP>192.168.1.1</ServerIP>                                <!-- GPS IP                   -->  
+	  <ServerPort>8080</ServerPort>                                   <!-- GPS Port                 -->
+      <AppID>ZYKT</AppID>                                             <!-- 定位云平台用户user下生成的唯一识别id-->
+      <Password>Zykt123</Password>	                                  <!-- 密码                     -->
+    </GPS>	
+	<GPSJZ> 
+		  <IsUsing>0</IsUsing>                                        <!-- GPSJZ 开关               -->                              
+		  <ServerIP>192.168.1.1</ServerIP>                            <!-- GPSJZ IP                 -->         
+		  <ServerPort>8080</ServerPort>                               <!-- GPSJZ Port               -->
+		  <AppID>ZYKT</AppID>                                         <!-- 定位云平台用户user下生成的唯一识别id -->
+		  <Password>Zykt123</Password>                                <!-- 用户密码                 -->
+		  <Key>123456</Key>                                           <!-- 签名要的密钥             -->
+		  <Station>8001</Station>                                     <!-- 坐席号                   -->
+		  <MaxWaitSecondTime>60</MaxWaitSecondTime>                   <!-- 最多等待时间             -->
+	</GPSJZ>
+    <IFDS> 
+      <IsUsing>0</IsUsing>                                            <!-- IFDS 开关                -->         
+      <StatisticsInterval>300</StatisticsInterval>                    <!-- 统计区间                 -->   
+      <TranslateLanguage>ZH_CN</TranslateLanguage>                    <!-- 语言                     -->   
+    </IFDS>   
+	<Dept>
+		<ProcessTimeoutDeptTypes>
+			<ProcessTimeoutDeptType>DIC014001</ProcessTimeoutDeptType>    <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+			<ProcessTimeoutDeptType>DIC014013</ProcessTimeoutDeptType>    <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+		</ProcessTimeoutDeptTypes>
+	</Dept>  
+    <SMT> 
+      <IsUsing>1</IsUsing>                                           <!-- SMT  开关                -->      
+      <Interval>10</Interval>                                        <!-- 检查间隔                 -->      
+      <Host>127.0.0.1</Host>                                         <!-- SMT  IP                  -->   
+      <Port>26410</Port>                                             <!-- SMT  Port                -->   
+      <HostSlave/>  
+      <PortSlave/>  
+      <SystemName>controlCenter</SystemName>                         <!-- 系统名称                 -->   
+      <SystemCode>controlCenter</SystemCode>                         <!-- 系统编码                 -->   
+    </SMT>  
+    <ThirdAlarm>
+      <IsUsing>1</IsUsing>                                           <!-- ThirdAlarm  开关         --> 
+    </ThirdAlarm>  
+    <LSP> 
+      <IsUsing>1</IsUsing>                                           <!-- LSP  开关                --> 
+      <ScanInterval>60</ScanInterval>                                <!-- 检查间隔                 --> 
+      <Host>127.0.0.1</Host>                                         <!-- LSP  IP                  -->         
+      <Port>22170</Port>                                             <!-- LSP  Port                -->  
+      <HostSlave/>  
+      <PortSlave/>  
+      <System>ICC</System>                                           <!-- LSP  系统名称            -->
+      <PackageSize>10</PackageSize>                                  <!-- LSP  每包数量            -->
+      <BearerKey>54z647m6zOrAxYEx4ceS0ka57DiPIVqiVhFhrFGT</BearerKey><!-- LSP  密钥                -->
+      <BearerKeySlave/> 
+    </LSP>
+    <IdentityInfo>
+       <IsUsing>0</IsUsing>                                          <!-- IdentityInfo  开关       -->
+       <serverip>192.168.240.78</serverip>                           <!-- IdentityInfo  IP         -->
+       <token>6404b993-a221-400e-a87c-e7d0af376f0a</token>           <!-- IdentityInfo  授权码     -->
+       <SmulateFlag>0</SmulateFlag>                                  <!-- IdentityInfo  是否模拟   -->
+   </IdentityInfo>	
+   <PersonInfo>
+       <IsUsing>1</IsUsing>                                         <!-- PersonInfo  开关          -->
+       <serverip>192.168.240.78</serverip>                          <!-- PersonInfo  IP            -->
+	   <Username>name</Username>                                    <!-- PersonInfo  用户名        -->
+	   <Password>123456</Password>                                  <!-- PersonInfo  密码          -->
+       <SmulateFlag>0</SmulateFlag>                                 <!-- PersonInfo  是否模拟      -->
+   </PersonInfo>
+   <PersonInfoData>
+       <IsUsing>1</IsUsing>                                        <!-- PersonInfoData  开关       -->
+	   <config>0</config>                                          <!-- PersonInfoData  是否模拟   -->
+	   <serverip>api.dataservice.sc</serverip>                     <!-- PersonInfoData  IP         -->
+	   <serverport>9090</serverport>                               <!-- PersonInfoData  port       -->
+	   <type>user</type>                                           <!-- 用户登录id                 -->
+	   <policeno>111660</policeno>                                 <!-- policeNo                   -->
+	   <userid>51000010701</userid>                                <!-- 用户id                     -->
+	   <appid>A-41946038927360</appid>                             <!-- appId                      -->
+	   <senderid>5100001920</senderid>                             <!-- 角色id                     -->
+	   <groupid>thunder</groupid>                                  <!-- 角色组id                   -->
+	   <ip>127.0.0.1</ip>                                          <!-- 服务器ip                   -->
+	   <mac>00:50:56:86:ef:62</mac>                                <!-- 服务器mac                  -->
+	   <tagAppId>ZY-JCJ</tagAppId>                                 <!-- tagappid                   -->
+	   <publicKey>rO0ABXNyABRqYXZhLnNlY3VyaXR5LktleVJlcL35T7OImqVDAgAETAAJYWxnb3JpdGhtdAASTGphdmEvbGFuZy9TdHJpbmc7WwAHZW5jb2RlZHQAAltCTAAGZm9ybWF0cQB+AAFMAAR0eXBldAAbTGphdmEvc2VjdXJpdHkvS2V5UmVwJFR5cGU7eHB0AANSU0F1cgACW0Ks8xf4BghU4AIAAHhwAAAAojCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAlTpl6tpSpmOlQYXm2ZyXk8WPb0+yi63NrsPYK5Yj4ckZYf1lIwBc9kJ4D9zEogeqjVxUwkeOWh7F7z0dAqLZZTI/UunudKp1740ekLWt/NM0m56KAaFsw2sUo4uGrMhymQL5CBhPfG64zrbUCLKPHR0/X9H+XzOxj1P/Zy9RN9sCAwEAAXQABVguNTA5fnIAGWphdmEuc2VjdXJpdHkuS2V5UmVwJFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZQVUJMSUM=</publicKey>  <!-- 公钥信息                 -->
+	   <areaCode>510000000000</areaCode>                           <!-- 区号                  -->
+   </PersonInfoData>  
+  </Plugin> 
+</ICC>

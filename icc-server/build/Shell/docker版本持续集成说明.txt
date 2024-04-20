@@ -1,0 +1,57 @@
+﻿注意： 如果是拿到打好的包进行安装部署，直接从3.4开始操作
+
+1、svn打包, 调用ICC_2.1_QuanZhou/02.Server/Build/Shell/build_release.sh进行，成功后目标生成在：
+	Package/Release/
+			|-CommandCenter.ICC.Server\
+					|CommandCenter.ICC.Server.tar.gz
+					|ConfigFiles
+					|Dockerfile
+					|docker.sh
+			|-CommandCenter.ICC.CTI\
+					|CommandCenter.ICC.CTI.tar.gz
+					|ConfigFiles
+					|Dockerfile
+					|docker.sh
+			|-CommandCenter.ICC.Gateway\
+					|CommandCenter.ICC.Gateway.tar.gz
+					|ConfigFiles
+					|Dockerfile
+					|docker.sh
+															
+2、拷贝Package/Release/ 目录下所有文件到docker服务器上
+
+3、制作镜像    
+	|3.1 分别进入CommandCenter.ICC.Server、CommandCenter.ICC.CTI和CommandCenter.ICC.Gateway目录，拷贝Shell目录下的docker.sh文件到当前目录，
+		将docker.sh改名为CommandCenter.ICC.***.Install.sh并赋执行权限后，后续命令
+	|3.2 制作服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 4 -v 3.x.x.x
+	     制作网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 4 -v 3.x.x.x
+		 制作 CTI镜像 ./CommandCenter.ICC.CTI.Install.sh -s 4 -v 3.x.x.x
+    |3.3 导出服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 5 -v 3.x.x.x
+		 导出网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 5 -v 3.x.x.x
+		 导出 CTI镜像 ./CommandCenter.ICC.CTI.Install.sh -s 5 -v 3.x.x.x
+	|3.4 安装服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 1 -v 3.x.x.x
+	     安装网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 1 -v 3.x.x.x
+		 安装 CTI镜像 ./CommandCenter.ICC.CTI.Install.sh -s 1 -v 3.x.x.x
+	
+
+4、配置文件和日志文件映射在宿主机/usr/CommandCenter/icc/ConfigFiles和/usr/CommandCenter/icc/Logs下，
+   修改宿主机上的文件等同于修改容器中对应的配置文件   
+   
+   
+其他命令：
+    卸载服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 0
+	卸载网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 0
+	卸载CTI 镜像 ./CommandCenter.ICC.CTI.Install.sh -s 0
+	
+	启动服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 3
+	停止服务镜像 ./CommandCenter.ICC.Server.Install.sh -s 2
+	启动网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 3
+	停止网关镜像 ./CommandCenter.ICC.Gateway.Install.sh -s 2
+	启动 CTI镜像 ./CommandCenter.ICC.CTI.Install.sh -s 3
+	停止 CTI镜像 ./CommandCenter.ICC.CTI.Install.sh -s 2
+	
+	查看docker进程 docker ps -a | grep icc
+	查看端口占用   netstat -anp | grep 11111
+	进入docker容器 docker exec -it 容器名 /bin/bash
+	
+	退出Dog        docker stop DogID

@@ -1,0 +1,6 @@
+
+
+#拉取镜像
+FROM --platform=linux/arm64/v8 192.168.51.88:80/commandcenter/public/ubuntu:v22.04-3
+
+#保存容器，导出快照，制作成基础镜像，上传仓库 

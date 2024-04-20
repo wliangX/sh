@@ -1,0 +1,23 @@
+﻿  Boost.cpp
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  BusinessImpl.cpp
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  FactoryImpl.cpp
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  PluginImpl.cpp
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFXXRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRequest.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\mainline\icc-server\Interface\Protocol\CGetBJRSFZHRespond.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  正在生成代码...
+    正在创建库 E:\mainline\icc-server\Build\Debug\IdentityInfo.lib 和对象 E:\mainline\icc-server\Build\Debug\IdentityInfo.exp
+  IdentityInfo.vcxproj -> E:\mainline\icc-server\Build\Debug\IdentityInfo.dll

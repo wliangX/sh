@@ -1,0 +1,18 @@
+version: "3.0"
+services:  
+  incident:
+    image: "commandcenter/icc/server:${TAG:-latest}"
+    container_name: "commandcenter.icc.server"
+    network_mode: "host"
+    user: root
+    volumes:
+       - "/usr/CommandCenter/log/icc/server:/usr/CommandCenter/icc/Tools/Logs/CommandCenter.ICC.Server.Alarm"
+       - "/etc/localtime:/etc/localtime"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "80M"
+        max-file: "10"
+    restart: "always"
+    environment:
+      - UCMS_ADDR=192.168.0.168:28025

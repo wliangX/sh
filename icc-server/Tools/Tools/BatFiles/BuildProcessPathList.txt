@@ -1,0 +1,20 @@
+;ServerList
+Server\CommandCenter.ICC.Server.Alarm CommandCenter.ICC.Server.Alarm.exe
+Server\CommandCenter.ICC.Server.BaseData CommandCenter.ICC.Server.BaseData.exe
+Server\CommandCenter.ICC.Server.CTI CommandCenter.ICC.Server.CTI.exe
+Server\CommandCenter.ICC.Server.DBAgent CommandCenter.ICC.Server.DBAgent.exe
+;GatewayList
+Gateway\CommandCenter.ICC.Gateway.Fast110 CommandCenter.ICC.Gateway.Fast110.exe
+Gateway\CommandCenter.ICC.Gateway.GPS CommandCenter.ICC.Gateway.GPS.exe
+Gateway\CommandCenter.ICC.Gateway.IFDS CommandCenter.ICC.Gateway.IFDS.exe
+Gateway\CommandCenter.ICC.Gateway.LSP CommandCenter.ICC.Gateway.LSP.exe
+Gateway\CommandCenter.ICC.Gateway.MRPS CommandCenter.ICC.Gateway.MRPS.exe
+Gateway\CommandCenter.ICC.Gateway.MPA CommandCenter.ICC.Gateway.MPA.exe
+Gateway\CommandCenter.ICC.Gateway.SMP CommandCenter.ICC.Gateway.SMP.exe
+Gateway\CommandCenter.ICC.Gateway.SMT CommandCenter.ICC.Gateway.SMT.exe
+Gateway\CommandCenter.ICC.Gateway.SmsLJ CommandCenter.ICC.Gateway.SmsLJ.exe
+Gateway\CommandCenter.ICC.Gateway.ThirdAlarm CommandCenter.ICC.Gateway.ThirdAlarm.exe
+Gateway\CommandCenter.ICC.Gateway.VCS CommandCenter.ICC.Gateway.VCS.exe
+Gateway\CommandCenter.ICC.Gateway.Web CommandCenter.ICC.Gateway.Web.exe
+Gateway\CommandCenter.ICC.Gateway.WeChatLJ CommandCenter.ICC.Gateway.WeChatLJ.exe
+Gateway\CommandCenter.ICC.Gateway.WeChatST CommandCenter.ICC.Gateway.WeChatST.exe

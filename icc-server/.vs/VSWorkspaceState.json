@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\build",
+    "\\Components",
+    "\\Interface\\Interface",
+    "\\Interface\\Interface\\Timer",
+    "\\Interface\\Interface\\Udp",
+    "\\Plugins",
+    "\\Plugins\\Plugins",
+    "\\Plugins\\Plugins\\Server"
+  ],
+  "SelectedNode": "\\Components\\Components",
+  "PreviewInSolutionExplorer": false
+}

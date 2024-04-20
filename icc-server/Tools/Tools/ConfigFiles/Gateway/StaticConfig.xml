@@ -1,0 +1,13 @@
+<ICC>
+	<Component>
+		<AmqClient>
+			<ClientID>ICC.Gateway</ClientID>
+			<Topics>topic_alarm_notice_sync;topic_device_state_sync;ActiveMQ.Advisory.Connection;topic_doubleserver;topic_send_smp_data_notify;topic_alarm;topic_alarm_sync;topic_acd_agent_state_sync;topic_basedata_sync;topic_acd_call_state_sync;ICC.Server.Topic.Login;icc_topic_third_alarm;topic_phone_position;Topic_WebService;Topic_BussinessCenter;topic_notice;topic_sync;topic_server_status_sync;topic_smp_data_change_notify;topic_health;topic_person</Topics>
+			<Queues>
+			app_get_alarm;icc_queue_third_alarm;icc_queue_web</Queues>
+		</AmqClient>
+		<Logger>
+			<TargetMidPath>CommandCenter.ICC.Gateway</TargetMidPath>
+		</Logger>	
+	</Component>	
+</ICC>

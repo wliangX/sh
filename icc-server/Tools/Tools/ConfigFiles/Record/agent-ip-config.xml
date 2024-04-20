@@ -1,0 +1,12 @@
+<Record>
+	<Agents>
+		<Agent>
+			<Ext>8001</Ext>
+			<IP>192.168.30.211</IP>
+		</Agent>
+		<Agent>
+			<Ext>8002</Ext>
+			<IP>192.168.23.66</IP>
+		</Agent>
+	</Agents>
+</Record>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ICC>
+	<Component>
+		<HttpServer>
+			<LocalPort>21010</LocalPort>                                           <!--  HttpServer   端口        -->
+			<NacosServerIp>127.0.0.1</NacosServerIp>                               <!--  NacosServer  IP          -->
+		    <NacosServerPort>8848</NacosServerPort>                                <!--  NacosServer  Port        -->
+			<NacosNamespace>dev</NacosNamespace>                                   <!--  NacosName    服务目录    -->
+			<NacosServiceName>icc-incident-service</NacosServiceName>              <!--  NacosService 服务名称    -->
+			<NacosGroupName>global</NacosGroupName>	                               <!--  NacosGroup   分组名称    -->
+            <queryurl>/nacos/v1/ns/instance/list</queryurl>                        <!--  Nacos        查询网址    -->
+		    <registurl>/nacos/v1/ns/instance</registurl>                           <!--  Nacos        注册网址    -->
+			<ucmsurl>/v1/health/getAddr</ucmsurl>                                  <!--  Nacos        网址        -->
+            <checkinterval>1</checkinterval>		                               <!--  Nacos        检测间隔    -->
+            <successflag>ok</successflag>                                          <!--  Nacos        成功标识    -->
+            <RespTimeout>30</RespTimeout>			                               <!--  Nacos        超时时间ms  -->
+			<RequestLimitCount>160</RequestLimitCount>
+		</HttpServer>
+		<AmqClient>
+			<CMSPriority>4</CMSPriority>                                           <!--  消息优先级               -->
+			<CMSExpiration>60000</CMSExpiration>                                   <!--  消息过期时间             -->
+			<IsConsumerExpiryCheckEnabled>0</IsConsumerExpiryCheckEnabled>         <!--  是否启用消费者过期检查   -->
+			<UserName>admin</UserName>                                             <!--  AmqClient    用户名      -->
+			<Password>Command_123</Password>                                       <!--  AmqClient    用户密码    -->
+			<FailoverTimeout>3000</FailoverTimeout>                                <!--  AmqClient    故障超时    -->
+			<ManagerPort>22060</ManagerPort>                                       <!--  AmqClient    管理端口    -->
+			<TimedWait>1</TimedWait>										 	   <!--  AmqClient抢锁等待时间 单位:秒 -->	
+			<Servers>
+				<Server>
+					<Host>192.168.0.168</Host>                                         <!-- AmqClient    IP           -->
+					<Port>22000</Port>                                             <!-- AmqClient    Port         -->
+					<ConnectionTimeout>3000</ConnectionTimeout>                    <!-- AmqClient    连接超时     -->
+					<MaxInactivityDuration>9000</MaxInactivityDuration>            <!-- mq最大不活动持续时间      -->
+				</Server>				                                          
+			</Servers>
+		</AmqClient>
+		<DBConn>
+			<Servers>
+			    <Server>
+				    <dbhost>192.168.0.168</dbhost>                                     <!-- 数据库IP                 -->
+			        <dbport>5432</dbport>                                          <!-- 数据库Port               -->
+				</Server>
+			</Servers>
+			<dbname>icc</dbname>                                                   <!-- 数据库名                 -->
+			<username>icc</username>                                               <!-- 数据库用户名             -->
+			<password>123456</password>                                            <!-- 数据库用户密码           -->
+			<DatabaseSuperUserName>postgres</DatabaseSuperUserName>                <!-- 数据库管理员名称         -->
+			<DatabaseSuperUserPassword>Command_123</DatabaseSuperUserPassword>     <!-- 数据库管理员户密码       -->
+			<connnum>10</connnum>                                                  <!-- 连接池的初始化大小       -->
+			<increasenum>2</increasenum>                                           <!-- 连接池自增长的大小       -->
+			<maxnum>20</maxnum>		                                               <!-- 连接池的最大大小         -->
+			<statementtimeout>30000</statementtimeout>		                       <!-- sql执行超时         -->
+		</DBConn> 
+		<Logger>
+			<Level>5</Level>                                                       <!-- 日志等级                 -->
+			<Target>../Tools/Logs</Target>                                         <!-- 日志保存路径             -->
+			<AutoFlush>1</AutoFlush>                                               <!-- 日志自动刷新功能         -->
+			<RotationSize>10</RotationSize>                                        <!-- 日志文件的最大尺寸       -->
+			<MaxSize>1000</MaxSize>                                                <!-- 文件夹所占最大空间       -->
+			<MinFreeSpace>1000</MinFreeSpace>                                      <!-- 磁盘最小预留空间         -->
+			<CheckInterval>60</CheckInterval>                                      <!-- 检测间隔                 -->
+			<IsCompress>true</IsCompress>                                          <!-- 日志是否压缩             -->
+			<PreserveDays>360</PreserveDays>                                        <!-- 日志保存时间             -->
+		</Logger>
+		<RedisClient>
+			<Servers>
+				<Server>
+					<Host>192.168.0.168</Host>                                         <!-- RedisClient IP           -->
+					<Port>22130</Port>                                             <!-- RedisClient Port         -->
+					<Password>Command_123</Password>                               <!-- RedisClient 登录密码     -->
+				</Server>				
+			</Servers>
+			<Mode>0</Mode>                                                         <!-- 部署模式 0哨兵1集群      -->
+		</RedisClient>
+	</Component>
+	<Plugin>
+		<DogClient>
+			<IsUsing>1</IsUsing>                                                   <!-- 加载DogClient插件 开关   -->
+		</DogClient>
+		<Message>
+			<ServiceLockTTL>15</ServiceLockTTL>                                    <!-- 获取服务锁数量           -->
+			<ServiceLockTimeOut>5</ServiceLockTimeOut>                             <!-- 获取服务锁超时           -->
+			<idgenrule>3</idgenrule>                                               <!-- ID默认规则               -->
+			<alarmidgenrule>4</alarmidgenrule>                                     <!-- AlarmID默认规则          -->
+			<zone>8</zone>                                                         <!-- 所处的时区               -->
+			<ShardUpdateTime>23</ShardUpdateTime>                                  <!-- 每日检查时间(24小时制)   -->
+			<TimeOut>5</TimeOut>                                                   <!-- post 请求超时时间        -->
+		</Message>		
+		<EditLock>
+			<timeInterval>60</timeInterval>                                        <!-- 编辑锁定时调用时间间隔   -->
+			<delayTime>5</delayTime>			                                   <!-- 编辑锁定时调用延迟时间   -->
+		</EditLock>
+		<Synthetical>
+			<servicehealthyflag>1</servicehealthyflag>                             <!-- 服务健康标志             -->
+			<isUseAutourge>0</isUseAutourge>                                       <!-- 读取是否启用自动催办配置 -->
+			<autourgeMode>2</autourgeMode>										   <!-- 自动催办模式1:电话催办, 2:短信催办, 3:电话与短信同时催办 -->
+			<UrgeCount>1</UrgeCount>											   <!-- 自动催办催办次数 -->
+			<UrgeInterval>60</UrgeInterval>										   <!-- 自动催办每次催办间隔 -->
+			<UrgeVoiceId>100</UrgeVoiceId>										   <!-- 自动催办警单调派单位语音文件号 -->
+			<UrgeSmsContent>您有新的警情,请进入系统查收!</UrgeSmsContent>		   <!-- 自动催办警单调派单位短信催办内容 -->	
+			<procthreaddispatchmode>1</procthreaddispatchmode>                     <!-- 线程分发模式，1：按照消息数最少分发，0：轮询  -->
+			<procthreadcount>8</procthreadcount>                                   <!-- 处理线程的数量    -->
+			<alarmprocthreadcount>4</alarmprocthreadcount>                         <!-- 警单增加或更新处理线程的数量    -->
+			<AssistantPolice>[辅]</AssistantPolice>                                <!-- 辅警类型警员    		-->
+			<Police>[警]</Police>                                				   <!-- 民警类型警员    		-->
+			<CodeMode>1</CodeMode>												   <!--	警员号码模式：1、警员身份证号码 2、警员编号	-->
+		</Synthetical>
+		<AlarmAttention>
+			<terminalexpired>24</terminalexpired>                                  <!-- 过期时间 小时           -->
+			<normalexpired>7</normalexpired>                                       <!-- 过期时间 天              -->
+			<interval>86400</interval>                                             <!-- 间隔                     -->
+		</AlarmAttention>
+		<ProcessTimeout>
+			<TimerSeconds>900</TimerSeconds>                                       <!-- 定时器启动间隔时间       -->
+			<ProcessTimeOut>60</ProcessTimeOut>                                    <!-- 超时时间                 -->
+			<ProcessValidDuration>1440</ProcessValidDuration>                      <!-- 超时警单有效时间         -->
+		</ProcessTimeout>
+		<TodayAlarm>
+			<interval>86400</interval>                                             <!-- 间隔                     -->
+			<procthreaddispatchmode>1</procthreaddispatchmode>                     <!-- 线程分发模式，1：按照消息数最少分发，0：轮询  -->
+			<procthreadcount>8</procthreadcount>                                   <!-- 处理线程的数量    -->
+		</TodayAlarm>
+		<TransportAlarm>
+			<DeptAcdMappings>
+				<DeptAcdMapping>
+					<Code>450300000000</Code>                                      <!-- 用户编码（如088411）     -->
+					<ACD>110</ACD>                                                 <!--  NacosService 服务名称   -->
+				</DeptAcdMapping> 
+			</DeptAcdMappings>
+			<DefaultDeptAcd>110</DefaultDeptAcd>                                   <!--  默认转警    -->    
+			<TimeOut>20</TimeOut>                                                  <!-- 转警超时时间，默认20s    -->        
+		</TransportAlarm> 
+		<Dept>
+			<ProcessTimeoutDeptTypes>
+				<ProcessTimeoutDeptType>DIC014001</ProcessTimeoutDeptType>         <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+				<ProcessTimeoutDeptType>DIC014013</ProcessTimeoutDeptType>         <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+			</ProcessTimeoutDeptTypes>
+		</Dept>
+		<Login>
+			<MultiClient>0</MultiClient>                                           <!--  是否多客户端            -->
+			<MultiClientName>icc_test</MultiClientName>                            <!--  多客户端登用户名        -->
+			<IPAuth>0</IPAuth>                                                     <!--  客户端鉴权              -->
+			<HeartbeatTime>5</HeartbeatTime>                                       <!--  客户端心跳检测间隔      -->
+		</Login>
+		<DBAgent>
+			<check_sql>SElECT 1</check_sql>                                        <!-- 数据库连接有效性检测的SQL语句称   -->
+			<client_maxnum>5</client_maxnum>                                       <!-- 数据库连接最大数                  -->
+			<max_page_size>10000</max_page_size>                                   <!-- 单页最大记录数                    -->
+			<statistic>1</statistic>                                               <!-- 数据库函数查询统计信息统计方式    -->
+			<procthreaddispatchmode>1</procthreaddispatchmode>                     <!-- 线程分发模式，1：按照消息数最少分发，0：轮询  -->
+			<procthreadcount>16</procthreadcount>                                  <!-- 处理线程的数量    -->
+			<CommonAlarmDeptQueryDays>5</CommonAlarmDeptQueryDays>				   <!-- 常用管辖单位查询范围，单位:天	-->
+			<CommonAlarmTypeQueryDays>5</CommonAlarmTypeQueryDays>				   <!-- 常用警情类型查询范围，单位:天	-->
+			<IntervalTime>10</IntervalTime>				  						   <!-- 更新Redis中存储常用管辖单位以及警情类型的频率，单位:天	-->
+		</DBAgent>
+		<StatisticsAlarm>
+			<StatisticsStartTime>1:00</StatisticsStartTime>                        <!-- 统计开始时间             -->
+			<NeedStatisticsCurrentDay>0</NeedStatisticsCurrentDay>			       <!-- 是否需要统计当前日期     -->
+		</StatisticsAlarm>
+		<Notice>
+			<RingTimeOut>30</RingTimeOut>                                          <!-- 通话超时（单位：秒）     -->
+			<TalkTimeOut>10</TalkTimeOut>			                               <!-- 通话超时（单位：分钟）   -->  
+		</Notice>
+		<Sms>
+			<SmsServiceName>rvs</SmsServiceName>                                   <!-- 短信发送 服务名称        -->
+		</Sms>
+		<MonitorSeat>
+			<Timing>5</Timing>												     	<!---定时检测坐席是否有用户绑定(单位：秒）   -->
+			<SendDelayTime>10</SendDelayTime>										<!---坐席主动告警消息中心发送间隔时间(单位：秒）   -->
+		</MonitorSeat>
+		<AlarmExtension>
+			<IsUsing>1</IsUsing>                                                    <!--  警情扩展 开关        -->
+		</AlarmExtension>
+	</Plugin>
+</ICC>

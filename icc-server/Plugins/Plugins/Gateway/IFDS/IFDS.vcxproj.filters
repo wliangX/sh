@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{6429fa0b-2533-4857-8b2a-814e911bd2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="processer">
+      <UniqueIdentifier>{db4082f5-4f88-4481-93c6-d30c57a60e4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Boost.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BusinessImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Ascii.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonWorkThread.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="StringCommon.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="Format.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="AlarmProcesser.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+    <ClCompile Include="SeatStatusChangedProcesser.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+    <ClCompile Include="AlarmStatisticsProcesser.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTime.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonDef.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTimer.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="SeatStorager.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentListResponseProcesser.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+    <ClCompile Include="SeatInfoChangedProcesser.cpp">
+      <Filter>processer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Boost.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BusinessImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Any.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="Ascii.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonThreadCore.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonWorkThread.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="MetaProgramming.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="StringCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="Format.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="INotifyProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="AlarmProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="SeatStatusChangedProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="AlarmStatisticsProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTime.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTimer.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTimerCore.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="SeatStorager.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentListResponseProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+    <ClInclude Include="SeatInfoChangedProcesser.h">
+      <Filter>processer</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,24 @@
+# 依赖基础镜像public版ubuntu-cron-curl:18.04-x86_64_i386
+FROM 192.168.51.87/commandcenter/public/ubuntu-cron-curl:v18.04-x86_64_i386
+     
+RUN mkdir -p /usr/CommandCenter && mkdir -p /usr/CommandCenter/icc
+
+# 传输文件
+COPY docker-entrypoint.sh /opt/docker-entrypoint.sh
+COPY config-first-init.sh /usr/CommandCenter/icc/config-first-init.sh
+COPY crond-shell4-front.sh /usr/CommandCenter/icc/crond-shell4-front.sh
+COPY container-restart.sh /usr/CommandCenter/icc/container-restart.sh
+COPY nacos-file-config.conf /usr/CommandCenter/icc/nacos-file-config.conf
+
+# 镜像启动脚本和定时任务脚本授权授权
+RUN chmod +x /opt/docker-entrypoint.sh \
+   && chmod +x /usr/CommandCenter/icc/config-first-init.sh \
+   && chmod +x /usr/CommandCenter/icc/crond-shell4-front.sh \
+   && chmod +x /usr/CommandCenter/icc/container-restart.sh \
+   && echo '*/1 * * * * root /bin/bash /usr/CommandCenter/icc/crond-shell4-front.sh' >> /etc/crontab \
+   && echo '*/1 * * * * root sleep 30 && /bin/bash /usr/CommandCenter/icc/crond-shell4-front.sh' >> /etc/crontab
+
+ADD ./CommandCenter.ICC.DeliveryServer.tar.gz /usr/CommandCenter/icc
+WORKDIR /usr/CommandCenter/icc/CommandCenter.ICC.DeliveryServer
+ENV LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH.
+CMD ["/bin/bash","-c","/opt/docker-entrypoint.sh"]

@@ -1,0 +1,15 @@
+<ICC>
+	<Component>
+		<AmqClient>
+			<ClientID>ICC.DeliveryServer</ClientID>
+			<Topics>topic_alarm_notice_sync;topic_device_state_sync;ActiveMQ.Advisory.Connection;topic_doubleserver;topic_send_smp_data_notify;topic_alarm;topic_linked_sync;topic_alarm_sync;topic_acd_agent_state_sync;topic_acd_call_state_sync;ICC.Server.Topic.Login;icc_topic_third_alarm;topic_phone_position;Topic_WebService;Topic_BussinessCenter;topic_notice;topic_sync;topic_server_status_sync;topic_smp_data_change_notify;topic_health</Topics>
+			<Queues>
+			queue_license_expiration;queue_cti_mrcc;queue_phone_position;app_update_feedback;icc_queue_MRPSicc_queue_sms;icc_queue_sms;icc_update_alarm;CASEINFO_VCSREQUEST;CASEDISPOSAL_VCSREQUEST;CASEFEEDBACK_VCSREQUEST;queue_alarm_vcs;queue_alarm_to_icc</Queues>
+		</AmqClient>
+		<Logger>
+			<TargetMidPath>CommandCenter.ICC.DeliveryServer</TargetMidPath>
+		</Logger>	
+	</Component>	
+</ICC>
+
+

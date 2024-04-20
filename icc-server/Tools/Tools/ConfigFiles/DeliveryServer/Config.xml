@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ICC> 
+  <Component> 
+	<HttpServer> 
+		<LocalPort>21080</LocalPort>                                           <!--  HttpServer   端口        -->
+		<NacosServerIp>127.0.0.1</NacosServerIp>                               <!--  NacosServer  IP          -->
+		<NacosServerPort>8848</NacosServerPort>                                <!--  NacosServer  Port        -->
+		<NacosNamespace>dev</NacosNamespace>                                   <!--  NacosName    服务目录    -->
+		<NacosServiceName>icc-deliveryserver-service</NacosServiceName>        <!--  NacosService 服务名称    -->
+		<NacosGroupName>global</NacosGroupName>	                               <!--  NacosGroup   分组名称    -->
+        <queryurl>/nacos/v1/ns/instance/list</queryurl>                        <!--  Nacos        查询网址    -->
+		<registurl>/nacos/v1/ns/instance</registurl>                           <!--  Nacos        注册网址    -->
+	    <ucmsurl>/v1/health/getAddr</ucmsurl>                                  <!--  Nacos        网址        -->
+        <checkinterval>1</checkinterval>		                               <!--  Nacos        检测间隔    -->
+        <successflag>ok</successflag>                                          <!--  Nacos        成功标识    -->
+        <RespTimeout>30</RespTimeout>			                               <!--  Nacos        超时时间ms  -->
+		<RequestLimitCount>160</RequestLimitCount>
+	</HttpServer>
+    <AmqClient> 
+      <CMSPriority>4</CMSPriority>                                             <!--  消息优先级               -->
+	  <CMSExpiration>60000</CMSExpiration>                                     <!--  消息过期时间             -->
+	  <IsConsumerExpiryCheckEnabled>0</IsConsumerExpiryCheckEnabled>           <!--  是否启用消费者过期检查   -->
+	  <UserName>admin</UserName>                                               <!--  AmqClient    用户名      -->
+	  <Password>Command_123</Password>                                         <!--  AmqClient    用户密码    -->
+	  <ManagerPort>22060</ManagerPort>                                         <!--  AmqClient    管理端口    -->
+	  <TimedWait>1</TimedWait>												   <!--  AmqClient抢锁等待时间 单位:秒 -->	
+	    <Servers>
+		  <Server>
+		    <Host>127.0.0.1</Host>                                             <!-- AmqClient    IP           -->
+		    <Port>22000</Port>                                                 <!-- AmqClient    Port         -->
+		    <ConnectionTimeout>3000</ConnectionTimeout>                        <!-- AmqClient    连接超时     -->
+			<MaxInactivityDuration>9000</MaxInactivityDuration>                <!-- mq最大不活动持续时间      -->
+		   </Server>				                                          
+	    </Servers>
+    </AmqClient>  
+    <DBConn> 
+      <dbname>icc</dbname>                     <!-- 数据库名                 -->                                        
+      <username>icc</username>                 <!-- 数据库用户名             -->
+      <password>123456</password>              <!-- 数据库用户密码           -->
+      <connnum>10</connnum>                    <!-- 连接池的初始化大小       -->
+      <increasenum>2</increasenum>             <!-- 连接池自增长的大小       -->
+      <maxnum>20</maxnum>                      <!-- 连接池的最大大小         -->
+	  <statementtimeout>30000</statementtimeout>		                       <!-- sql执行超时         -->
+      <Servers> 
+        <Server> 
+          <dbhost>127.0.0.1</dbhost>           <!-- 数据库IP                 -->
+          <dbport>5432</dbport>                <!-- 数据库Port               -->
+        </Server> 
+      </Servers> 
+    </DBConn>  
+    <Logger> 
+      <Level>5</Level>  
+      <Target>../Tools/Logs</Target>          <!-- 日志等级                 -->
+	  <AutoFlush>1</AutoFlush>                <!-- 日志自动刷新功能         -->
+	  <RotationSize>10</RotationSize>         <!-- 日志文件的最大尺寸       -->
+	  <MaxSize>1000</MaxSize>                 <!-- 文件夹所占最大空间       -->
+	  <MinFreeSpace>1000</MinFreeSpace>       <!-- 磁盘最小预留空间         -->
+	  <CheckInterval>60</CheckInterval>       <!-- 检测间隔                 -->
+	  <IsCompress>true</IsCompress>           <!-- 日志是否压缩             -->
+	  <PreserveDays>360</PreserveDays>         <!-- 日志保存时间             -->
+    </Logger>  
+    <RedisClient> 
+      <Mode>0</Mode>                          <!-- 部署模式 0哨兵1集群      -->
+      <Servers> 
+        <Server> 
+          <Host>127.0.0.1</Host>              <!-- RedisClient IP           -->
+          <Port>22130</Port>                  <!-- RedisClient Port         -->
+          <Password>Command_123</Password>    <!-- RedisClient 登录密码     -->
+        </Server> 
+      </Servers> 
+    </RedisClient> 
+  </Component>  
+  <Plugin> 
+    <DogClient> 
+      <IsUsing>1</IsUsing>                   <!-- 加载DogClient插件 开关   -->
+    </DogClient>  
+    <Message> 
+      <ServiceLockTTL>15</ServiceLockTTL>         <!-- 获取服务锁数量           -->
+      <ServiceLockTimeOut>5</ServiceLockTimeOut>  <!-- 获取服务锁超时           -->
+	  <ShardUpdateTime>23</ShardUpdateTime>                                  <!-- 每日检查时间(24小时制)   -->
+	  <TimeOut>5</TimeOut>                        <!-- post 请求超时时间        -->
+    </Message>  
+    <MPA> 
+      <IsUsing>1</IsUsing>                        <!-- 加载MPA插件 开关     -->
+    </MPA>   
+    <MRPS> 
+      <IsUsing>1</IsUsing>                                <!-- 加载MRPS插件 开关    -->    
+      <UDPPort>21000</UDPPort>                            <!-- UDP服务端口          -->    
+      <SendTimes>3</SendTimes>                            <!-- 发送次数             -->   
+      <TimeInterval>3</TimeInterval>                      <!-- 定时器间隔           -->   
+	  <IsRebindSendFailed>0</IsRebindSendFailed>          <!-- 是否重新绑定发送失败 --> 
+      <RebindSendFailedCount>10</RebindSendFailedCount>   <!-- 重新绑定发送失败计数 --> 
+    </MRPS>  
+	<Dept>
+		<ProcessTimeoutDeptTypes>
+			<ProcessTimeoutDeptType>DIC014001</ProcessTimeoutDeptType>   <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+			<ProcessTimeoutDeptType>DIC014013</ProcessTimeoutDeptType>   <!--发送处警超时部门类型，默认市局、分局指挥中心 -->
+		</ProcessTimeoutDeptTypes>
+	</Dept>
+    <SMP> 
+      <IsUsing>1</IsUsing>                               <!-- 加载SMP插件 开关     -->   
+      <serverip>127.0.0.1</serverip>                     <!-- SMP IP               --> 
+	  <serverport>26000</serverport>                     <!-- SMP port             --> 
+	  <user>admin</user>                                 <!-- SMP 用户名           --> 
+	  <password>Command_123</password>                   <!-- SMP 用户名密码       --> 
+	  <logintype>0</logintype>                           <!-- SMP 登录类型         --> 
+	  <systemcode>SYS_CODE_ICC</systemcode>              <!-- SMP 系统代码         --> 
+	  <publiccode>SYS_CODE_PUBLIC</publiccode>           <!-- SMP 公共代码         --> 
+	  <smpservicename>center-smp-northface-service</smpservicename>   <!-- SMP 服务名称      --> 
+      <servicehealthyflag>1</servicehealthyflag>	     <!-- SMP 服务名称         --> 
+	  <syndatapackagesize>200</syndatapackagesize>       <!-- 数据包大小           -->
+	  <ignorehttperror>1</ignorehttperror>               <!-- http错误             -->
+      <AutoSyncUserStaffBind>1</AutoSyncUserStaffBind>   <!-- 自动同步用户StaffBind-->
+      <SyncTime>86400</SyncTime>                         <!-- 同步时间             -->
+      <SyncHour>3</SyncHour>                             <!-- 同步时间             -->
+      <SyncMinute>0</SyncMinute>                         <!-- 同步时间             -->
+	  <SynCheckInterval>600</SynCheckInterval>           <!-- 同步检查间隔         -->
+	  <SynProcessSeatFlag>1</SynProcessSeatFlag>         <!-- 同步坐席标志         -->
+      <CheckLicense>3600</CheckLicense>                  <!-- 检测许可证间隔       -->
+      <SystemType>ICC</SystemType>                       <!-- 系统类型             -->
+	  <isfilterbyrootdeptcode>0</isfilterbyrootdeptcode> <!--是否过滤部门代码      -->
+      <SystemRootDeptCode>530700000000</SystemRootDeptCode>  <!-- 部门代码         -->
+      <DeptCodeMappings>                                
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX001</BeforeMap>                 <!-- 部门代码映射前       -->
+          <AfterMap>DIC014013</AfterMap>                 <!-- 部门代码映射后       -->
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX002</BeforeMap>  
+          <AfterMap>DIC014001</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX003</BeforeMap>  
+          <AfterMap>DIC014002</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX004</BeforeMap>  
+          <AfterMap>DIC014015</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX005</BeforeMap>  
+          <AfterMap>DIC014014</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX006</BeforeMap>  
+          <AfterMap>DIC014016</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX007</BeforeMap>  
+          <AfterMap>DIC014006</AfterMap> 
+        </DeptCodeMapping>  
+        <DeptCodeMapping> 
+          <BeforeMap>BMLX008</BeforeMap>  
+          <AfterMap>DIC014007</AfterMap> 
+        </DeptCodeMapping> 
+      </DeptCodeMappings> 
+    </SMP>     
+    <VCS> 
+      <IsUsing>1</IsUsing>                           <!-- 加载VCS插件 开关     -->   
+      <CallExpire>300</CallExpire>                   
+	  <VcsSyncStartFlag>0</VcsSyncStartFlag>         <!-- 开始同步标志         -->  
+      <SynCheckInterval>300</SynCheckInterval>       <!-- 定时器定时触发       -->   
+      <VcsSyncInterval>60</VcsSyncInterval>          <!-- 补偿间隔时间         -->   
+      <VcsSyncUpdateFlag>0</VcsSyncUpdateFlag>       <!-- 同步更新标志         -->  
+    </VCS>
+	<SEAT> 
+      <IsUsing>1</IsUsing>  
+      <AlarmCountTime>30</AlarmCountTime> 
+    </SEAT>
+	<Extension>
+		<IsUsing>1</IsUsing>
+		<DetectionTime>3</DetectionTime>
+		<FpsServiceName>commandcenter-fps-service</FpsServiceName>
+		<FpsPlayTarget>/file/v2/listM3u8PlayUrl</FpsPlayTarget>
+		<FpsDownloadTarget>/file/v2/listAudioUrl</FpsDownloadTarget>
+		<FmsTarget>/file/v2/getFileUrl?fileId=</FmsTarget>
+		<FmsServiceName>commandcenter-file-service</FmsServiceName>
+		<ServiceHealthyFlag>1</ServiceHealthyFlag>
+		<SendOverTime>20</SendOverTime>
+		<procthreaddispatchmode>1</procthreaddispatchmode>
+		<procthreadcount>4</procthreadcount>
+	</Extension>
+  </Plugin> 
+</ICC>

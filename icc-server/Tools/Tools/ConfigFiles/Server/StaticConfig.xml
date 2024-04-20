@@ -1,0 +1,12 @@
+<ICC>
+	<Component>
+		<AmqClient>
+			<ClientID>ICC.Server.Alarm</ClientID>
+			<Topics>ICC.Server.Topic.Login;alarm_process_timeout_sync;topic_acd_agent_state_sync;topic_basedata_sync;topic_transfer_call_ex_sync;ActiveMQ.Advisory.Connection;topic_device_state_sync;topic_call_over_sync;topic_monitor_sync;topic_cti_connect_state_sync;topic_alarm_sync;topic_doubleserver;topic_health</Topics>
+			<Queues>queue_alarm;queue_basedata;queue_monitor;queue_acd_agent_state_sync;queue_auth;queue_config;queue_db;queue_alarm_chat;queue_notice;queue_bills;queue_alarm_separate;queue_phone_book;queues_linked_info_sync</Queues>
+		</AmqClient>
+		<Logger>
+			<TargetMidPath>CommandCenter.ICC.Server.Alarm</TargetMidPath>
+		</Logger>
+	</Component>
+</ICC>

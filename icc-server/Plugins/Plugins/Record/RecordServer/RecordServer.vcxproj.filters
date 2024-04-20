@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Boost.cpp" />
+    <ClCompile Include="FactoryImpl.cpp" />
+    <ClCompile Include="RecordBusinessImpl.cpp" />
+    <ClCompile Include="RecordPluginImpl.cpp" />
+    <ClCompile Include="CapDataProc.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaStorage.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="RTPPacket.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="RTPPackProc.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="RTPRawPacket.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="AESClient.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentIPMap.cpp">
+      <Filter>CapDataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordFileManage.cpp" />
+    <ClCompile Include="CommonFunc.cpp" />
+    <ClCompile Include="CommonTimer.cpp" />
+    <ClCompile Include="HttpAddress.cpp" />
+    <ClCompile Include="UploadFiles.cpp" />
+    <ClCompile Include="PluginResource.cpp" />
+    <ClCompile Include="FSFtpFileDownLoad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Boost.h" />
+    <ClInclude Include="FactoryImpl.h" />
+    <ClInclude Include="RecordBusinessImpl.h" />
+    <ClInclude Include="RecordPluginImpl.h" />
+    <ClInclude Include="CapDataProc.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaStorage.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="RTPPacket.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="RTPPackProc.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="RTPRawPacket.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="AESClient.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentIPMap.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordFileManage.h" />
+    <ClInclude Include="CommonFunc.h" />
+    <ClInclude Include="netpacketdefine.h">
+      <Filter>CapDataProc</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTimer.h" />
+    <ClInclude Include="CommonTimerCore.h" />
+    <ClInclude Include="HttpAddress.h" />
+    <ClInclude Include="UploadFiles.h" />
+    <ClInclude Include="PluginResource.h" />
+    <ClInclude Include="FSFtpFileDownLoad.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CapDataProc">
+      <UniqueIdentifier>{176e16ab-eecd-458e-8646-f25a1b779421}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
