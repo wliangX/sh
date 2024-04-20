@@ -234,4 +234,8 @@ docker images
 删除镜像
 docker rmi 426f88595589
 
+
 get_seat_alarm_statistics_request
+
+
+git rm filename
